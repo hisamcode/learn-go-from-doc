@@ -1,0 +1,7 @@
+go 1.22.0
+
+use (
+	./create-a-go-module
+	./getting-started
+	./web-service
+)
