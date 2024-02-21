@@ -68,7 +68,7 @@ func postAlbums(w http.ResponseWriter, r *http.Request) {
 }
 
 // getAlbumByID locates the album whose ID value matches the id
-// parameter sent by the client, then returns that album as a response
+// parHelloameter sent by the client, then returns that album as a response
 func getAlbumByID(w http.ResponseWriter, r *http.Request) {
 	id := r.PathValue("id")
 
