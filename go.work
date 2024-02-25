@@ -6,6 +6,7 @@ use (
 	./generics
 	./getting-started
 	./gowiki
+	./langspec
 	./utf8
 	./web-service
 )
