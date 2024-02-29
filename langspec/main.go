@@ -38,16 +38,56 @@ func SlicePointer() {
 
 }
 
-func main() {
-	t := ""
-	for i := 0; i < 20; i++ {
-		if i == 10 {
-			fmt.Println("10")
-			continue
-		}
-		t += fmt.Sprintf("%v", i)
+type ByteSize float64
+
+const (
+	_           = iota
+	KB ByteSize = 1 << (10 * iota)
+	MB
+	GB
+	TB
+	PB
+	EB
+	ZB
+	YB
+)
+
+func (b ByteSize) String() string {
+	switch {
+	case b >= YB:
+		return fmt.Sprintf("%.2fYB", b/YB)
+	case b >= ZB:
+		return fmt.Sprintf("%.2fZB", b/ZB)
+	case b >= EB:
+		return fmt.Sprintf("%.2fEB", b/EB)
+	case b >= PB:
+		return fmt.Sprintf("%.2fPB", b/PB)
+	case b >= TB:
+		return fmt.Sprintf("%.2fTB", b/TB)
+	case b >= KB:
+		return fmt.Sprintf("%.2fKB", b/KB)
 	}
-	fmt.Println(t)
+	return fmt.Sprintf("%.2ffb", b)
+}
+
+func main() {
+	// i := 4
+	// So n << x is "n times 2, x times". And y >> z is "y divided by 2, z times".
+	// For example, 1 << 5 is "1 times 2, 5 times" or 32. And 32 >> 5 is "32 divided by 2, 5 times" or 1.
+	// 1 << 5 = 1*2, 5x is 1 * 2 = 2, 2 * 2 = 4, 4 * 2 = 8, 8 * 2 = 16, 16 * 2 = 32
+	// 3 << 3 = 3 * 2, 3x is 3 * 2 = 6, 6 * 2 = 12, 12 * 2 = 24
+	// 5 << 4 = 5 * 2, 4x is 5 * 2 = 10, 10 * 2 = 20, 20 * 2 = 40, 40 * 2 = 80
+	fmt.Println(1 << 30)
+	fmt.Println(ByteSize(1e13))
+	// t := ""
+	// for i := 0; i < 20; i++ {
+	// 	if i == 10 {
+	// 		fmt.Println("10")
+	// 		continue
+	// 	}
+	// 	t += fmt.Sprintf("%v", i)
+	// }
+	// fmt.Println(t)
 }
 
 func TestSlice() {
