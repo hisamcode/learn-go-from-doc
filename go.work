@@ -9,4 +9,5 @@ use (
 	./langspec
 	./utf8
 	./web-service
+	./zzcontext
 )

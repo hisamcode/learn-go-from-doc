@@ -1,0 +1,1 @@
+suffix with zz is not from go doc
